@@ -54,10 +54,12 @@
                 <table>
                 <thead>
                     <tr>
-                        <td>Nombre del ejercicio</td>
-                        <td>Grupo Muscular principal</td>
-                        <td>Descripcion</td>
-                        <td>Imagen</td>
+                        <td>NOMBRE</td>
+                        <td>MÚSCULO</td>
+                        <td>DESCRIPCIÓN</td>
+                        <td>Número de Series</td>
+                        <td>Número de repeticiones</td>
+                        <td>IMAGEN</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,7 +68,9 @@
                         <td>{{$ejercicio->nombre}}</td>
                         <td>{{$ejercicio->musculo}}</td>
                         <td>{{$ejercicio->descripcion}}</td>
-                        <td><img src="./images/ejercicios/{{$ejercicio->imagen}}" alt="Imagen de {{$ejercicio->nombre}}" width="200"/></td>
+                        <td>{{$ejercicio->pivot->num_series}}</td>
+                        <td>{{$ejercicio->pivot->num_repes}}</td>
+                        <td><img src="./images/ejercicios/{{$ejercicio->imagen}}" alt="Imagen de {{$ejercicio->nombre}}" width="150"/></td>
                     </tr>
                     @endforeach
                 </tbody>

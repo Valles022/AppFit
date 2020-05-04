@@ -21,6 +21,8 @@
                         <td>MÚSCULO</td>
                         <td>DESCRIPCIÓN</td>
                         <td>IMAGEN</td>
+                        <td>Número de Series</td>
+                        <td>Número de repeticiones</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +31,8 @@
                         <td>{{$ejercicio->nombre}}</td>
                         <td>{{$ejercicio->musculo}}</td>
                         <td>{{$ejercicio->descripcion}}</td>
+                        <td>{{$ejercicio->pivot->num_series}}</td>
+                        <td>{{$ejercicio->pivot->num_repes}}</td>
                         <td><img src="./images/ejercicios/{{$ejercicio->imagen}}" alt="Imagen de {{$ejercicio->nombre}}" width="200"/></td>
                     </tr>
                     @endforeach
