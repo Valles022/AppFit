@@ -21,6 +21,7 @@ import CoListEjercicios from './components/ListAddEjercicio.vue';
 import CoAddEjercicio from './components/AddEjercicio.vue';
 import CoShowEjercicio from './components/ShowEjercicio.vue';
 import CoSearchEjercicio from './components/SearchEjercicio.vue';
+import CoShowAllEjercicios from './components/ShowAllEjercicios.vue';
 
 
 
@@ -45,6 +46,7 @@ Vue.component('listado-ejercicios', CoListEjercicios);
 Vue.component('add-ejercicio', CoAddEjercicio);
 Vue.component('show-ejercicio', CoShowEjercicio);
 Vue.component('search-ejercicio', CoSearchEjercicio);
+Vue.component('all-ejercicios', CoShowAllEjercicios);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -64,4 +66,8 @@ Vue.component('search-ejercicio', CoSearchEjercicio);
 
 new Vue({
     el: '#contenedor-clientes',
+ })
+
+ new Vue({
+     el: '#contenedor-listado'
  })

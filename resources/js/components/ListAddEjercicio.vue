@@ -1,8 +1,8 @@
 <template >
     <div class="row justify-content-center">
         <div class="col-lg-12 card" id="listaEjercicios">
+            <search-ejercicio></search-ejercicio>
             <ul class="pl-0">
-                <search-ejercicio></search-ejercicio>
                 <li class="list-group-ejercicios">
                     <table class="table table-hover">
                         <thead class="table-dark">
