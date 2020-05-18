@@ -9,14 +9,16 @@ use App\Entrenamiento;
 
 class UserController extends Controller
 {
-
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $user = Auth::user();
 
-        if($user->esCliente()){
+        if($user->role_id == 3){
             return redirect('/homeClientes');
-        } else if($user->esEntrenador()){
+        } else if($user->role_id == 2){
             return redirect('/listaClientes');
         } else{
             return redirect('/listUsuarios');
@@ -47,23 +49,19 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'objetivo' => $request->objetivo,
+                'role_id' => $request->role,
                 'imagen' => $imageName,
             ];
         } else{
             $campoValidado = [
                 'name' => $request->name,
                 'email' => $request->email,
+                'role_id' => $request->role,
                 'objetivo' => $request->objetivo,
             ];
         }
 
         $user->update($campoValidado);
-
-        $role = $user->roles()->get()->first();
-
-        $user->roles()->detach($role);
-
-        $user->roles()->attach($request->role);
 
         return redirect('home');
     }
@@ -71,10 +69,6 @@ class UserController extends Controller
     public function delete($id){
         
         $user = User::findOrFail($id);
-
-        $role = $user->roles()->get()->first();
-
-        $user->roles()->detach($role);
 
         $user->destroy($id);
 
@@ -92,7 +86,7 @@ class UserController extends Controller
         $clientes = [];
 
         foreach($users as $user){
-            if($user->esCliente()){
+            if($user->role_id == 3){
                 array_push($clientes,$user);
             }
         }
@@ -129,7 +123,7 @@ class UserController extends Controller
         $clientes = [];
 
         foreach($users as $user){
-            if($user->esCliente()){
+            if($user->role_id == 3){
                 $entrenamiento = $user->entrenamientos()->get()->first();
                 $user->entrenamiento = $entrenamiento;
                 array_push($clientes,$user);
@@ -144,7 +138,7 @@ class UserController extends Controller
         $user = Auth::user();
 
         $entrenamientos = Entrenamiento::all();
-        if($user->esEntrenador()){
+        if($user->role_id == 2){
             $entrenamientos = $user->entrenamientos()->get();
         }
         

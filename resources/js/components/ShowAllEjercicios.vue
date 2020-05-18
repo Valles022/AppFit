@@ -30,8 +30,8 @@
                         <td>{{ ejercicio.nombre }}</td>
                         <td>{{ ejercicio.musculo }}</td>
                         <td>{{ ejercicio.descripcion }}</td>
-                        <td v-if="!cliente"><button type="button" class="btn btn-info" :href="`/editEjercicio/${ejercicio.id}`">Editar</button></td>
-                        <td v-if="!cliente"><button type="button" class="btn btn-danger" :href="`/deleteEjercicio/${ejercicio.id}`">Borrar</button></td>
+                        <td v-if="!cliente"><a class="btn btn-info" :href="`/editEjercicio/${ejercicio.id}`">Editar</a></td>
+                        <td v-if="!cliente"><a class="btn btn-danger" :href="`/deleteEjercicio/${ejercicio.id}`">Borrar</a></td>
                     </tr> 
                 </tbody>
             </table>              

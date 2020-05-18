@@ -38974,13 +38974,10 @@ var render = function() {
                   !_vm.cliente
                     ? _c("td", [
                         _c(
-                          "button",
+                          "a",
                           {
                             staticClass: "btn btn-info",
-                            attrs: {
-                              type: "button",
-                              href: "/editEjercicio/" + ejercicio.id
-                            }
+                            attrs: { href: "/editEjercicio/" + ejercicio.id }
                           },
                           [_vm._v("Editar")]
                         )
@@ -38990,13 +38987,10 @@ var render = function() {
                   !_vm.cliente
                     ? _c("td", [
                         _c(
-                          "button",
+                          "a",
                           {
                             staticClass: "btn btn-danger",
-                            attrs: {
-                              type: "button",
-                              href: "/deleteEjercicio/" + ejercicio.id
-                            }
+                            attrs: { href: "/deleteEjercicio/" + ejercicio.id }
                           },
                           [_vm._v("Borrar")]
                         )
@@ -52381,8 +52375,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\proyecto\AppFit\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\proyecto\AppFit\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\proyecto\AppFit2\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\proyecto\AppFit2\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

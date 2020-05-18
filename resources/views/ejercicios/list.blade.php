@@ -8,7 +8,11 @@
     </div><br />
   @endif
   
-  {{ $esCliente = Auth::user()->esCliente()}}
+  @if(Auth::user()->role_id != 3)
+  {{$esCliente = false}}
+  @else
+  {{$esCliente = true}}
+  @endif
   <div id="contenedor-listado" class="row justify-content-center">
     <all-ejercicios :cliente="{{json_encode($esCliente)}}"></all-ejercicios>
 <div>

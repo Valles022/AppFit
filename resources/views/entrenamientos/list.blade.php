@@ -16,7 +16,7 @@
             <h2>Listado de Entrenamientos</h2>
         </div>
         <div class="">
-            <h2><a class="btn btn-primary" href="{{ route('entrenamientos.crear')}}"> Crear Entrenamiento</a></h2>
+            <h2>@if(Auth::user()->role_id != 3)<a class="btn btn-primary" href="{{ route('entrenamientos.crear')}}"> Crear Entrenamiento</a>@endif</h2>
         </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
               <td>ID</td>
               <td>Tipo Entrenamiento</td>
               <td>Descripcion</td>
-              @if(!Auth::user()->esCliente())
+              @if(Auth::user()->role_id != 3)
               <td>Action</td>
               @endif
             </tr>
@@ -39,7 +39,7 @@
                 <td>{{$entrenamiento->id}}</td>
                 <td><a href="{{ route('entrenamientos.show', $entrenamiento->id)}}">{{$entrenamiento->tipo_entrenamiento}}</a></td>
                 <td>{{$entrenamiento->descripcion}}</td>
-                @if(!Auth::user()->esCliente())
+                @if(Auth::user()->role_id != 3)
                 <td>
                     <form action="{{ route('entrenamientos.destroy', $entrenamiento->id)}}" method="post">
                       @csrf

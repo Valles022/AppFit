@@ -39,13 +39,13 @@
                             </div>
                         </div>
 
-                        @if(Auth::user()->esAdmin())
+                        
                         <div class="form-group row">
                             <label for="role" class="col-md-3 col-form-label text-md-right">{{ __('Role') }}</label>
-
+                            @if(Auth::user()->role_id == 1)
                             <div class="col-md-8">
                             <select class="custom-select" id="role" name="role">
-                            @if($user->esEntrenador())
+                            @if($user->role_id == 2)
                                 <option selected value="2">Entrenador</option>
                                 <option value="3">Cliente</option>
                             @else
@@ -60,8 +60,14 @@
                                     </span>
                                 @enderror
                             </div>
+                            @else
+                            <div class="col-md-8">
+                                <label for="role" class="col-md-3 col-form-label text-md-right">{{ $user->roles->nombre }}</label>
+                                <input id="role" type="hidden" name="role" value="{{ $user->role_id }}" >
+                            </div>
+                            @endif
                         </div>
-                        @endif
+                        
                         <div class="form-group row">
                             <label for="objetivo" class="col-md-3 col-form-label text-md-right">{{ __('Objetivo') }}</label>
 

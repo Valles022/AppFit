@@ -20,7 +20,7 @@ class EsAdmin
         $user = Auth::user();
         if($user == null){
             return redirect('/');
-        } else if(!$user->esAdmin()) {
+        } else if($user->role_id != 1) {
             return redirect('/');
         }
         return $next($request);

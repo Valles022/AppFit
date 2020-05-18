@@ -22,7 +22,7 @@
                 </thead>
                 <tbody>
                     @foreach($usuarios as $usuario)
-                    @if(!$usuario->esAdmin())
+                    @if($usuario->role_id != 1)
                     <tr>
                         <td>{{$usuario->id}}</td>
                         @if($usuario->imagen)

@@ -16,10 +16,11 @@ class CreateEjercicioEntrenamientosTable extends Migration
         Schema::create('ejercicio_entrenamiento', function (Blueprint $table) {
             $table->unsignedBigInteger('ejercicio_id');
             $table->unsignedBigInteger('entrenamiento_id');
-            $table->unsignedBigInteger('num_series');
-            $table->unsignedBigInteger('num_repes');
             $table->foreign('ejercicio_id')->references('id')->on('ejercicios')->onDelete('cascade');;
             $table->foreign('entrenamiento_id')->references('id')->on('entrenamientos')->onDelete('cascade');;
+
+            $table->integer('num_series');
+            $table->integer('num_repes');
         });
     }
 

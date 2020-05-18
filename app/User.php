@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','objetivo','imagen'
+        'name', 'email', 'password','objetivo','imagen','role_id'
     ];
 
     /**
@@ -38,34 +38,10 @@ class User extends Authenticatable
     ];
     public function roles()
     {
-        return $this->belongsToMany('App\Roles','role_user');
+        return $this->belongsTo('App\Roles','id');
     }
     public function entrenamientos()
     {
         return $this->belongsToMany('App\Entrenamiento','entrenamiento_user');
-    }
-    public function esCliente()
-    {
-        $role = $this->roles()->first();
-        if($role->nombre == 'Cliente'){
-            return true;
-        }
-        return false;
-    }
-    public function esEntrenador()
-    {
-        $role = $this->roles()->first();
-        if($role->nombre == 'Entrenador'){
-            return true;
-        }
-        return false;
-    }
-    public function esAdmin()
-    {
-        $role = $this->roles()->first();
-        if($role->nombre == 'Administrador'){
-            return true;
-        }
-        return false;
     }
 }

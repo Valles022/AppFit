@@ -67,7 +67,11 @@
                             <div class="nav-item">
                                 <a class="nav-link" href="{{ route('ejercicios.list')}}">Ejercicios</a>
                             </div>
-                        
+                            @if(Auth::user()->imagen != null)
+                            <img src="/images/usuarios/{{ Auth::user()->imagen }}" style="width:40px; height: 40px; border-radius: 50%" alt="Imagen de" />
+                            @else
+                            <img src="/images/usuarios/default.jpg" style="width:40px; height: 40px; border-radius: 50%" alt="Imagen de" />
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

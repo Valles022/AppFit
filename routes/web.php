@@ -27,7 +27,7 @@ Route::get('/createEjercicio','EjercicioController@createEjercicio')->name('ejer
 Route::get('/editEjercicio/{id}','EjercicioController@edit')->name('ejercicios.editar');
 Route::post('/storeEjercicio','EjercicioController@storeEjercicio')->name('ejercicios.store');
 Route::put('/updateEjercicio/{id}','EjercicioController@update')->name('ejercicios.update');
-Route::delete('/deleteEjercicio/{id}','EjercicioController@destroy')->name('ejercicios.destroy');
+Route::get('/deleteEjercicio/{id}','EjercicioController@destroy')->name('ejercicios.destroy');
 
 Route::get('/getEjercicios', 'EjercicioController@getListEjercicios')->name('ejercicios.getList');
 Route::get('/searchEjercicio/{search}', 'EjercicioController@searchEjercicio')->name('ejercicios.search');

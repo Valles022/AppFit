@@ -24,15 +24,15 @@ class EntrenamientoController extends Controller
 
         $entrenamientos = Entrenamiento::all();
 
-        if($userLogued->esEntrenador()){
+        if($userLogued->role_id == 2){
             $entrenamientos = $userLogued->entrenamientos()->get();
-        } else if($userLogued->esCliente()){
+        } else if($userLogued->role_id == 3){
             $users = User::all()->where('objetivo',$userLogued->objetivo);
 
             $entrenamientos = [];
 
             foreach($users as $user){
-                if($user->esEntrenador()){
+                if($user->role_id == 2){
                     $trainning = $user->entrenamientos()->get();
                     foreach($trainning as $train){
                         array_push($entrenamientos,$train);
@@ -95,7 +95,7 @@ class EntrenamientoController extends Controller
         
         $ejercicios = $entrenamiento->ejercicios()->get();
 
-        if(Auth::user()->esCliente()){
+        if(Auth::user()->role_id == 3){
             return view('entrenamientos.showToClient',compact('entrenamiento','ejercicios'));
         }
         return view('entrenamientos.show',compact('entrenamiento','ejercicios'));
