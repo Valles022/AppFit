@@ -5,9 +5,6 @@
     </div>
 </template>
 
-
-
-
 <script>
 import bus from '../busdata.js';
 
