@@ -19,7 +19,7 @@ class UserController extends Controller
         if($user->role_id == 3){
             return redirect('/homeClientes');
         } else if($user->role_id == 2){
-            return redirect('/listaClientes');
+            return view('homeEntrenador');
         } else{
             return redirect('/listUsuarios');
         }
@@ -75,25 +75,7 @@ class UserController extends Controller
         return redirect('home');
     }
 
-    public function listClientes()
-    {
-        $entrenador = Auth::user();
-
-        $entrenamientos = $entrenador->entrenamientos()->get();
-
-        $users = User::all()->where('objetivo',$entrenador->objetivo);
-
-        $clientes = [];
-
-        foreach($users as $user){
-            if($user->role_id == 3){
-                array_push($clientes,$user);
-            }
-        }
-
-        return view('homeEntrenador',compact('clientes','entrenamientos'));
-    }
-
+    //Devuelve la vista home de administrador con una lista de todos los usuarios
     public function listUsuarios()
     {
         $usuarios = User::all();
@@ -101,6 +83,7 @@ class UserController extends Controller
         return view('home',compact('usuarios'));
     }
 
+    //Asigna un entrenamiento nuevo al cliente borrando la relación con el anterior segun los parametros enviados des de un componente de la vista homeEntrenaodres
     public function asignEntrenamiento($entrenamientoid, $userid)
     {
         $user = User::findOrFail($userid);
@@ -114,6 +97,7 @@ class UserController extends Controller
         return redirect()->route('clientes.list');
     }
 
+    //Devuelve los usuarios clientes que tengan el mismo objetivo que el entrenador
     public function getClientes()
     {
         $entrenador = Auth::user();
@@ -133,6 +117,7 @@ class UserController extends Controller
         return response()->json($clientes);
     }
 
+    //Devuelve todos los entrenamientos y en caso del que usuario autenticado sea un entrenador, devuelve los entrenamientos creados por ese entrenador
     public function getEntrenamientos()
     {
         $user = Auth::user();
@@ -144,6 +129,8 @@ class UserController extends Controller
         
         return response()->json($entrenamientos);
     }
+
+    //Devuelve la vista home de clientes junto con el entrenamiento del cliente y los ejercicios del entrenamiento
     public function homeClientes(){
         $user = Auth::user();
 
