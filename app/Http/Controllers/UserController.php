@@ -63,7 +63,7 @@ class UserController extends Controller
 
         $user->update($campoValidado);
 
-        return redirect('home');
+        return redirect('/');
     }
 
     public function delete($id){
@@ -72,7 +72,7 @@ class UserController extends Controller
 
         $user->destroy($id);
 
-        return redirect('home');
+        return redirect('/');
     }
 
     //Devuelve la vista home de administrador con una lista de todos los usuarios
@@ -94,7 +94,7 @@ class UserController extends Controller
         }
         $user->entrenamientos()->attach($entrenamientoid);
 
-        return redirect()->route('clientes.list');
+        return redirect('/');
     }
 
     //Devuelve los usuarios clientes que tengan el mismo objetivo que el entrenador

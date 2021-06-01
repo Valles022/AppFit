@@ -42,7 +42,7 @@
                         
                         <div class="form-group row">
                             <label for="role" class="col-md-3 col-form-label text-md-right">{{ __('Role') }}</label>
-                            @if(Auth::user()->role_id == 1)
+                            @if(Auth::user()->role_id == 1 && Auth::user() != $user)
                             <div class="col-md-8">
                             <select class="custom-select" id="role" name="role">
                             @if($user->role_id == 2)
@@ -62,8 +62,18 @@
                             </div>
                             @else
                             <div class="col-md-8">
-                                <label for="role" class="col-md-3 col-form-label text-md-right">{{ $user->roles->nombre }}</label>
-                                <input id="role" type="hidden" name="role" value="{{ $user->role_id }}" >
+                                @if ($user->role_id == 1)
+                                    <label for="role" class="col-md-6 col-form-label text-md-left">Administrador</label>
+                                    <input id="role" type="hidden" name="role" value="{{ $user->role_id }}" >
+                                @endif
+                                @if ($user->role_id == 2)
+                                    <label for="role" class="col-md-6 col-form-label text-md-left">Entrenador</label>
+                                    <input id="role" type="hidden" name="role" value="{{ $user->role_id }}" >
+                                @endif
+                                @if ($user->role_id == 3)
+                                    <label for="role" class="col-md-6 col-form-label text-md-left">Cliente</label>
+                                    <input id="role" type="hidden" name="role" value="{{ $user->role_id }}" >
+                                @endif
                             </div>
                             @endif
                         </div>

@@ -11,15 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+use App\Http\Middleware\EsAdmin;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
+// Route::get('/home', function () {
+//     return view('auth.login');
+// });
 
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', 'UserController@index')->name('homeUser');
+Route::get('/', 'UserController@index')->name('homeUser');
 
 //Rutas referentes a ejercicios
 Route::get('/listEjercicios', 'EjercicioController@index')->name('ejercicios.list');
@@ -57,7 +61,7 @@ Route::get('/asignEntrenamiento/{entrenamientoid}/{userid}', 'UserController@asi
 Route::get('/getClientes', 'UserController@getClientes')->name('clientes.get');
 
 //Rutas referentes a usuarios
-Route::get('/listUsuarios', 'UserController@listUsuarios')->name('usuarios.list');
+Route::get('/listUsuarios', 'UserController@listUsuarios')->name('usuarios.list')->middleware('EsAdmin');
 Route::get('/editUsuario/{id}','UserController@edit')->name('usuarios.editar');
 Route::put('/update/{id}','UserController@update')->name('usuarios.update');
 Route::delete('/deleteUsuario/{id}','UserController@delete')->name('usuarios.delete');

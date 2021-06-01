@@ -3,13 +3,13 @@
 @section('content')
 <div class="container-fluid">
     <div class="row  justify-content-center">
-        <div class="col-lg-4">
+        <div class="col-md-6">
             <div class="card h-100">
                 <div class="card-header text-center">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <div class="col-lg-12">
-                        <img src="/images/background/Logo.jpg" style="width:500px" alt="Logo de la empresa"/>
+                    <div class="row justify-content-center">
+                        <img src="/images/background/Logo.jpg" style="width:450px; height: 260px" alt="Logo de la empresa"/>
                     </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-8">
+        {{-- <div class="col-lg-8">
             <div id="carouselExampleIndicators" class="carousel slide w-100" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -103,7 +103,7 @@
                 </div>
                 
             </div>
-        </div>
+        </div>  --}}
     </div>
 </div>
 @endsection
